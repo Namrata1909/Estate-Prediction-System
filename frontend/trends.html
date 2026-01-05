@@ -1,0 +1,104 @@
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="chart"></canvas>
+
+<script>
+const ctx = document.getElementById('chart');
+new Chart(ctx, {
+type: 'line',
+data: {
+labels: ['2019','2020','2021','2022','2023'],
+datasets: [{
+label: 'Average Price Trend',
+data: [45,50,55,60,68],
+borderWidth: 2
+}]
+}
+});
+</script>
+
+<link rel="stylesheet" href="style.css"> -->
+
+<!-- <div class="container">
+    <h2>Market Trends</h2>
+    <canvas id="chart"></canvas>
+
+    <div class="nav">
+        <a href="predict.html">Back to Prediction</a>
+    </div>
+</div>
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Trends</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Real Estate Market Trends</h2>
+
+    <p style="color:#555; font-size:14px;">
+        Average property price trend over the last few years
+    </p>
+
+    <!-- Chart -->
+    <canvas id="priceChart"></canvas>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="predict.html">⬅ Back to Prediction</a>
+        |
+        <a href="login.html">Logout</a>
+    </div>
+</div>
+
+<script>
+const ctx = document.getElementById('priceChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['2019', '2020', '2021', '2022', '2023'],
+        datasets: [{
+            label: 'Average House Price (in Lakhs ₹)',
+            data: [45, 48, 55, 62, 70],
+            borderColor: '#4CAF50',
+            backgroundColor: 'rgba(76, 175, 80, 0.2)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 5
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

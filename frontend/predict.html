@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="style.css">
+<!-- <h2>Estate Price Prediction</h2> -->
+
+<!-- <input type="number" id="area" placeholder="Area (sqft)">
+<input type="number" id="bed" placeholder="Bedrooms">
+<input type="number" id="bath" placeholder="Bathrooms">
+
+<button type="button" onclick="predict()">Predict</button> -->
+
+<!-- ✅ ANSWER YAHA SHOW HOGA -->
+<p id="result" style="font-weight:bold; color:green;"></p>
+
+<script>
+function predict() {
+    fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            area: document.getElementById("area").value,
+            bedrooms: document.getElementById("bed").value,
+            bathrooms: document.getElementById("bath").value
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText =
+            "Predicted Price: ₹ " + data.predicted_price;
+    })
+    .catch(() => {
+        document.getElementById("result").innerText =
+            "Error in prediction";
+    });
+}
+</script>
+<div class="container">
+    <h2>Estate Price Prediction</h2>
+
+    <input type="number" id="area" placeholder="Area (sqft)">
+    <input type="number" id="bed" placeholder="Bedrooms">
+    <input type="number" id="bath" placeholder="Bathrooms">
+
+    <button type="button" onclick="predict()">Predict Price</button>
+
+    <p id="result"></p>
+
+    <div class="nav">
+        <a href="trends.html">View Market Trends</a>
+    </div>
+</div>
+
+
