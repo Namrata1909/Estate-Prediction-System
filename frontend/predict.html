@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style.css">
+<!-- <link rel="stylesheet" href="style.css"> -->
 <!-- <h2>Estate Price Prediction</h2> -->
 
 <!-- <input type="number" id="area" placeholder="Area (sqft)">
@@ -8,7 +8,7 @@
 <button type="button" onclick="predict()">Predict</button> -->
 
 <!-- ✅ ANSWER YAHA SHOW HOGA -->
-<p id="result" style="font-weight:bold; color:green;"></p>
+<!-- <p id="result" style="font-weight:bold; color:green;"></p>
 
 <script>
 function predict() {
@@ -50,4 +50,98 @@ function predict() {
     </div>
 </div>
 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Estate Price Prediction</title>
 
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Predicted Price Box */
+        .price-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffffff;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            display: none;
+            z-index: 1000;
+        }
+
+        .price-box h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .price-box p {
+            margin-top: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🔔 Predicted Price Result Box -->
+<div id="priceBox" class="price-box">
+    <h3>Predicted Price</h3>
+    <p id="priceValue">₹ 0</p>
+</div>
+
+<!-- 🔹 Main Prediction Card -->
+<div class="container">
+    <h2>Estate Price Prediction</h2>
+
+    <input type="number" id="area" placeholder="Area (sqft)">
+    <input type="number" id="bed" placeholder="Bedrooms">
+    <input type="number" id="bath" placeholder="Bathrooms">
+
+    <button type="button" onclick="predict()">Predict Price</button>
+
+    <div class="nav">
+        <a href="trends.html">View Market Trends</a>
+    </div>
+</div>
+
+<script>
+function predict() {
+    fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            area: document.getElementById("area").value,
+            bedrooms: document.getElementById("bed").value,
+            bathrooms: document.getElementById("bath").value
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.predicted_price) {
+            document.getElementById("priceBox").style.display = "block";
+            document.getElementById("priceValue").innerText =
+                "₹ " + data.predicted_price;
+        } else {
+            alert("Prediction failed!");
+        }
+    })
+    .catch(error => {
+        alert("Error connecting to backend");
+        console.log(error);
+    });
+}
+</script>
+
+</body>
+</html>

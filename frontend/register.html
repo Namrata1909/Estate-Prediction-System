@@ -1,43 +1,22 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="style.css">
 <head>
     <meta charset="UTF-8">
     <title>User Registration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-        }
-        .box {
-            width: 300px;
-            margin: 100px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 5px;
-            text-align: center;
-        }
-        input {
-            width: 90%;
-            padding: 8px;
-            margin: 10px 0;
-        }
-        button {
-            padding: 8px 15px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="container">
     <h2>User Registration</h2>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
 
+    <!-- IMPORTANT: type="button" -->
     <button type="button" onclick="register()">Register</button>
 
     <p id="msg"></p>
@@ -46,7 +25,6 @@
         <a href="login.html">Already have an account? Login</a>
     </div>
 </div>
-
 
 <script>
 function register() {
@@ -64,19 +42,23 @@ function register() {
     .then(data => {
         document.getElementById("msg").innerText = data.message;
 
-        // ✅ Redirect only if registration successful
+        // ✅ Redirect to login page after successful registration
         if (data.message === "User Registered Successfully") {
+            document.getElementById("msg").className = "success";
             setTimeout(() => {
                 window.location.href = "login.html";
-            }, 1000);   // 1 second delay
+            }, 800);
+        } else {
+            document.getElementById("msg").className = "error";
         }
     })
     .catch(error => {
         document.getElementById("msg").innerText = "Error connecting to backend";
+        document.getElementById("msg").className = "error";
+        console.log(error);
     });
 }
 </script>
-
 
 </body>
 </html>

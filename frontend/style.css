@@ -1,13 +1,13 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(120deg, #74ebd5, #9face6);
     height: 100vh;
-}
+} */
 
 /* Center card */
-.container {
+/* .container {
     width: 350px;
     margin: 100px auto;
     background: #ffffff;
@@ -20,20 +20,20 @@ body {
 h2 {
     margin-bottom: 20px;
     color: #333;
-}
+} */
 
 /* Inputs */
-input {
+/* input {
     width: 90%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
-}
+} */
 
 /* Buttons */
-button {
+/* button {
     width: 95%;
     padding: 10px;
     margin-top: 15px;
@@ -47,17 +47,17 @@ button {
 
 button:hover {
     background: #43a047;
-}
+} */
 
 /* Message / Result */
-#msg, #result {
+/* #msg, #result {
     margin-top: 15px;
     font-weight: bold;
     color: #2e7d32;
-}
+} */
 
 /* Navigation links */
-.nav {
+/* .nav {
     margin-top: 15px;
 }
 
@@ -66,4 +66,149 @@ button:hover {
     color: #1976d2;
     font-size: 14px;
     margin: 0 5px;
+} */
+/* ---------- GLOBAL STYLES ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(120deg, #74ebd5, #9face6);
+    min-height: 100vh;
+}
+
+/* ---------- MAIN CONTAINER CARD ---------- */
+.container {
+    width: 360px;
+    margin: 100px auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+/* ---------- HEADINGS ---------- */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+}
+
+/* ---------- INPUT FIELDS ---------- */
+input {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4CAF50;
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+    width: 100%;
+    padding: 11px;
+    margin-top: 15px;
+    background: #4CAF50;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #43a047;
+}
+
+/* ---------- MESSAGE / RESULT TEXT ---------- */
+#msg {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Success & error colors */
+.success {
+    color: #2e7d32;
+}
+
+.error {
+    color: #c62828;
+}
+
+/* ---------- NAVIGATION LINKS ---------- */
+.nav {
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #1976d2;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- PREDICTED PRICE BOX ---------- */
+.price-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    display: none;
+    z-index: 1000;
+}
+
+.price-box h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #444;
+}
+
+.price-box p {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+/* ---------- MARKET TRENDS PAGE ---------- */
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+/* ---------- RESPONSIVE (Mobile Friendly) ---------- */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        margin: 80px auto;
+    }
+
+    .price-box {
+        top: 10px;
+        right: 10px;
+        padding: 12px 18px;
+    }
+
+    .price-box p {
+        font-size: 18px;
+    }
 }
